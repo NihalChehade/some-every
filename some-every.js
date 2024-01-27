@@ -7,10 +7,14 @@ Examples:
 */
 
 function hasOddNumber(arr) {
-    for(let i=0; i<arr.length; i++){
-        if(!(arr[i]%2===0))return true;
-    }
-    return false;
+    // for(let i=0; i<arr.length; i++){
+    //     if(!(arr[i]%2===0))return true;
+    // }
+    // return false;
+
+    return arr.some(function(v){
+        return !(v%2===0);
+    })
 }
 
 /*
@@ -22,10 +26,16 @@ Examples:
 */
 
 function hasAZero(num) {
-    const numString=num.toString();
-     return numString.includes('0');
+    // const numString=num.toString();
+    //  return numString.includes('0');
+
+    const numArray=num.toString().split('');
+    return numArray.some(function(dig){
+        return dig==='0';
+    })
+
 }
-console.log(hasAZero(1212121));
+// console.log(hasAZero(1212121));
 /*
 Write a function called hasOnlyOddNumbers which accepts an array and returns true if every single number in the array is odd. If any of the values in the array are not odd, the function should return false. 
 
@@ -35,11 +45,15 @@ Examples:
 */
 
 function hasOnlyOddNumbers(arr) {
-    for(let i=0; i<arr.length; i++){
-        if((arr[i]%2===0))return false;
-    }
-    return true;
+    // for(let i=0; i<arr.length; i++){
+    //     if((arr[i]%2===0))return false;
+    // }
+    // return true;
+    return arr.every(function(val){
+        return (val % 2 )!== 0;
+      })
 }
+
 
 /*
 Write a function called hasNoDuplicates which accepts an array and returns true if there are no duplicate values (more than one element in the array that has the same value as another). If there are any duplicates, the function should return false.
@@ -50,12 +64,16 @@ Examples:
 */
 
 function hasNoDuplicates(arr) {
-    for(let i=0; i<arr.length; i++){
-        for(let j=1; j<arr.length; j++){
-            if(arr[i]===arr[j]) return false;
-        }
-        return true; 
-}
+//     for(let i=0; i<arr.length; i++){
+//         for(let j=1; j<arr.length; j++){
+//             if(arr[i]===arr[j]) return false;
+//         }
+//         return true; 
+// }
+
+return arr.every(function(v){
+    return arr.indexOf(v) === arr.lastIndexOf(v);
+  });
 }
 
 /*
@@ -74,10 +92,14 @@ Examples:
 */
 
 function hasCertainKey(arr, key) {
-    for(let i=0; i<arr.length; i++){
-        if(!arr[i][key]) return false;
-    }
-    return true;
+    // for(let i=0; i<arr.length; i++){
+    //     if(!arr[i][key]) return false;
+    // }
+    // return true;
+
+    return arr.every(function(val){
+        return val[key] });
+
 }
 
 /*
@@ -97,8 +119,12 @@ Examples:
 */
 
 function hasCertainValue(arr, key, searchValue) {
-    for(let i=0; i<arr.length; i++){
-        if(!(arr[i][key]===searchValue)) return false;
-    }
-    return true;
+    // for(let i=0; i<arr.length; i++){
+    //     if(!(arr[i][key]===searchValue)) return false;
+    // }
+    // return true;
+
+    return arr.every(function(val){
+        return val[key] === searchValue;
+      })
 }
